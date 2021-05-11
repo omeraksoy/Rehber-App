@@ -34,12 +34,14 @@ class kisi{
 
 let rehber:kisi[] = []
 
-function ekleKontrol(){
+    // Inputs
     let isimInput = (<HTMLInputElement>document.getElementById("nameInput"));
     let soyisimInput = (<HTMLInputElement>document.getElementById("surnameInput"));
     let telNoInput = (<HTMLInputElement>document.getElementById("numberInput"));
     let mailInput = (<HTMLInputElement>document.getElementById("mailInput"));
 
+function ekleKontrol(){
+    
     if(
         isimInput.value == '' || soyisimInput.value == '' || telNoInput.value == '' || mailInput.value == '' 
     ){
@@ -51,13 +53,8 @@ function ekleKontrol(){
 
 
 function ekle(){
-    let isimInput = (<HTMLInputElement>document.getElementById("nameInput"));
-    let soyisimInput = (<HTMLInputElement>document.getElementById("surnameInput"));
-    let telNoInput = (<HTMLInputElement>document.getElementById("numberInput"));
-    let mailInput = (<HTMLInputElement>document.getElementById("mailInput"));
-
+    
     kisiEkle(isimInput,soyisimInput,telNoInput,mailInput);
-
 } 
 
 function kisiEkle(isimInput,soyisimInput,telNoInput,mailInput){
@@ -148,10 +145,7 @@ soyisimText.innerHTML = element.soyisim;
 telNoText.innerHTML = element.tel;    
 mailKapsayici.innerHTML = element.mail;     
 
-    let isimInput = (<HTMLInputElement>document.getElementById("nameInput"));
-    let soyisimInput = (<HTMLInputElement>document.getElementById("surnameInput"));
-    let telNoInput = (<HTMLInputElement>document.getElementById("numberInput"));
-    let mailInput = (<HTMLInputElement>document.getElementById("mailInput"));
+    
 
     isimInput.value = "";
     soyisimInput.value = "";
@@ -185,10 +179,7 @@ function tekSil(silinecekKisi){
 //
 function guncelle(guncellenecekKisi){
     
-    let isimInput = (<HTMLInputElement>document.getElementById("nameInput"));
-    let soyisimInput = (<HTMLInputElement>document.getElementById("surnameInput"));
-    let telNoInput = (<HTMLInputElement>document.getElementById("numberInput"));
-    let mailInput = (<HTMLInputElement>document.getElementById("mailInput"));
+    
 
     let kisi = rehber.find((kisi:kisi) =>{
         return kisi.id == guncellenecekKisi.id;
@@ -216,10 +207,7 @@ function guncelle(guncellenecekKisi){
 //
 function SatiriGuncelle(guncelleButonu){
 
-    let isimInput = (<HTMLInputElement>document.getElementById("nameInput"));
-    let soyisimInput = (<HTMLInputElement>document.getElementById("surnameInput"));
-    let telNoInput = (<HTMLInputElement>document.getElementById("numberInput"));
-    let mailInput = (<HTMLInputElement>document.getElementById("mailInput"));
+    
 
     let kisiIndex = rehber.findIndex((element:kisi) =>{
         return element.id == guncelleButonu.id;

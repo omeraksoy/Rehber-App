@@ -20,11 +20,12 @@ var kisi = /** @class */ (function () {
     return kisi;
 }());
 var rehber = [];
+// Inputs
+var isimInput = document.getElementById("nameInput");
+var soyisimInput = document.getElementById("surnameInput");
+var telNoInput = document.getElementById("numberInput");
+var mailInput = document.getElementById("mailInput");
 function ekleKontrol() {
-    var isimInput = document.getElementById("nameInput");
-    var soyisimInput = document.getElementById("surnameInput");
-    var telNoInput = document.getElementById("numberInput");
-    var mailInput = document.getElementById("mailInput");
     if (isimInput.value == '' || soyisimInput.value == '' || telNoInput.value == '' || mailInput.value == '') {
         alert("Lütfen Bilgileri Eksiksiz Giriniz!");
     }
@@ -33,10 +34,6 @@ function ekleKontrol() {
     }
 }
 function ekle() {
-    var isimInput = document.getElementById("nameInput");
-    var soyisimInput = document.getElementById("surnameInput");
-    var telNoInput = document.getElementById("numberInput");
-    var mailInput = document.getElementById("mailInput");
     kisiEkle(isimInput, soyisimInput, telNoInput, mailInput);
 }
 function kisiEkle(isimInput, soyisimInput, telNoInput, mailInput) {
@@ -118,10 +115,6 @@ function kisileriEkranaYazdir() {
         soyisimText.innerHTML = element.soyisim;
         telNoText.innerHTML = element.tel;
         mailKapsayici.innerHTML = element.mail;
-        var isimInput = document.getElementById("nameInput");
-        var soyisimInput = document.getElementById("surnameInput");
-        var telNoInput = document.getElementById("numberInput");
-        var mailInput = document.getElementById("mailInput");
         isimInput.value = "";
         soyisimInput.value = "";
         telNoInput.value = "";
@@ -151,10 +144,6 @@ function tekSil(silinecekKisi) {
 }
 //
 function guncelle(guncellenecekKisi) {
-    var isimInput = document.getElementById("nameInput");
-    var soyisimInput = document.getElementById("surnameInput");
-    var telNoInput = document.getElementById("numberInput");
-    var mailInput = document.getElementById("mailInput");
     var kisi = rehber.find(function (kisi) {
         return kisi.id == guncellenecekKisi.id;
     });
@@ -175,10 +164,6 @@ function guncelle(guncellenecekKisi) {
 }
 //
 function SatiriGuncelle(guncelleButonu) {
-    var isimInput = document.getElementById("nameInput");
-    var soyisimInput = document.getElementById("surnameInput");
-    var telNoInput = document.getElementById("numberInput");
-    var mailInput = document.getElementById("mailInput");
     var kisiIndex = rehber.findIndex(function (element) {
         return element.id == guncelleButonu.id;
     });
