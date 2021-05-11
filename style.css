@@ -1,0 +1,68 @@
+.ekle,
+.hepsiniSil {
+  width: 130px !important;
+}
+.ekle:hover,
+.hepsiniSil:hover {
+  transition: 0.5s ease all;
+}
+.numbers {
+  background-color: rgb(240, 218, 247);
+  border-radius: 10px;
+}
+.fa-trash-alt {
+  color: red;
+}
+.fa-trash-alt:hover {
+  transition: 1s ease all;
+  transform: scale(1.4);
+}
+.fa-edit {
+  color: rgb(0, 102, 255);
+  margin-right: 12px !important;
+}
+.fa-edit:hover {
+  transition: 1s ease all;
+  transform: scale(1.4);
+}
+#isim {
+  font-size: 22px;
+}
+#soyisim {
+  font-size: 22px;
+}
+#mail {
+  font-size: 20px;
+}
+#tel {
+  font-size: 21px;
+}
+#nameInput,
+#surnameInput,
+#mailInput,
+#numberInput {
+  border-color: rgb(240, 218, 247);
+}
+#nameInput:focus-visible,
+#surnameInput:focus-visible,
+#mailInput:focus-visible,
+#numberInput:focus-visible {
+  border-color: rgb(240, 218, 247);
+  outline: 0px !important;
+}
+#icons {
+  text-align: right !important;
+}
+#clearCross {
+  color: red;
+  position: absolute;
+  right: -170px;
+  top: 39px;
+  font-size: 30px;
+  cursor: pointer;
+}
+#clearCross:hover {
+  color: rgb(4, 136, 32);
+  transition: 1s ease all;
+  transform: scale(1.1);
+}
