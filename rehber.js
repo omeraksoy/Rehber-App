@@ -163,13 +163,13 @@ function guncelle(guncellenecekKisi) {
     telNoInput.value = kisi.tel;
     mailInput.value = kisi.mail;
     var guncelleButon = document.createElement('button');
-    guncelleButon.classList.add('btn', 'btn-outline-primary', 'ekle');
+    guncelleButon.classList.add('btn', 'btn-outline-primary', 'guncelle');
     guncelleButon.setAttribute('onclick', "SatiriGuncelle(this)");
     guncelleButon.setAttribute('type', 'button');
     guncelleButon.setAttribute('id', kisi.id.toString());
     guncelleButon.innerHTML = "Güncelle";
-    var butons = document.querySelector('.buttons');
-    butons.appendChild(guncelleButon);
+    var butonKapsayici = document.getElementById('guncelleButonKapsayici');
+    butonKapsayici.appendChild(guncelleButon);
     var ekleButonu = document.getElementById('ekle1');
     ekleButonu.style.display = 'none';
 }

@@ -66,3 +66,8 @@
   transition: 1s ease all;
   transform: scale(1.1);
 }
+.guncelle {
+  width: 130px !important;
+  margin-right: 17px;
+  margin-left: -17px;
+}

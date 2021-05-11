@@ -201,13 +201,13 @@ function guncelle(guncellenecekKisi){
     mailInput.value = kisi.mail;
 
     let guncelleButon = document.createElement('button');
-    guncelleButon.classList.add('btn','btn-outline-primary','ekle');
+    guncelleButon.classList.add('btn','btn-outline-primary','guncelle');
     guncelleButon.setAttribute('onclick',`SatiriGuncelle(this)`);
     guncelleButon.setAttribute('type','button');
     guncelleButon.setAttribute('id',kisi.id.toString());
     guncelleButon.innerHTML = "Güncelle";
-    let butons = document.querySelector('.buttons');
-    butons.appendChild(guncelleButon);
+    let butonKapsayici = document.getElementById('guncelleButonKapsayici');
+    butonKapsayici.appendChild(guncelleButon);
     
     let ekleButonu = document.getElementById('ekle1');
     ekleButonu.style.display = 'none';
