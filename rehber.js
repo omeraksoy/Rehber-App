@@ -130,9 +130,12 @@ function kisileriEkranaYazdir() {
 }
 //
 function hepsiniSil() {
-    rehber = [];
-    kisileriEkranaYazdir();
-    console.log(rehber);
+    var confirmBox = confirm("Emin misiniz?");
+    if (confirmBox == true) {
+        rehber = [];
+        kisileriEkranaYazdir();
+        console.log(rehber);
+    }
 }
 //
 function tekSil(silinecekKisi) {

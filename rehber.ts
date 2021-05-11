@@ -161,10 +161,12 @@ mailKapsayici.innerHTML = element.mail;
 });}
 //
 function hepsiniSil(){
-
-    rehber = [];
+    let confirmBox = confirm("Emin misiniz?");
+    if(confirmBox == true){
+        rehber = [];
     kisileriEkranaYazdir(); 
     console.log(rehber);
+    }
 }
 //
 function tekSil(silinecekKisi){
