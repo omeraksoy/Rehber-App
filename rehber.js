@@ -1,22 +1,3 @@
-// class insan {
-//     isim: string
-//     soyisim: string
-//     mail : string
-//     numara: number
-//     cinsiyet :string
-// }
-//     let telRehber = <insan[]> [] 
-//     function ekle1(kisi:insan){
-//         telRehber.push(kisi);
-//     }
-//     function guncelle(indexNo,kisi){
-//         let guncellenecek = telRehber[indexNo];
-//         guncellenecek = kisi;
-//     }
-//     function sil1(indexno){
-//         let silinecekKisi = telRehber[indexno];
-//         telRehber.splice(indexno,1);
-//     }
 // sayfadaki ekle butonuna basildiginda  inputlardaki bilgileri
 // alip kisiekle fonksiyonuna gonderen sonrasinda safyadaki 
 // kayitlari yenileyen fonksiyonu cagiran bir fonksiyaon yaz
@@ -39,6 +20,18 @@ var kisi = /** @class */ (function () {
     return kisi;
 }());
 var rehber = [];
+function ekleKontrol() {
+    var isimInput = document.getElementById("nameInput");
+    var soyisimInput = document.getElementById("surnameInput");
+    var telNoInput = document.getElementById("numberInput");
+    var mailInput = document.getElementById("mailInput");
+    if (isimInput.value == '' || soyisimInput.value == '' || telNoInput.value == '' || mailInput.value == '') {
+        alert("Lütfen Bilgileri Eksiksiz Giriniz!");
+    }
+    else {
+        ekle();
+    }
+}
 function ekle() {
     var isimInput = document.getElementById("nameInput");
     var soyisimInput = document.getElementById("surnameInput");

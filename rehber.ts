@@ -34,7 +34,20 @@ class kisi{
 
 let rehber:kisi[] = []
 
+function ekleKontrol(){
+    let isimInput = (<HTMLInputElement>document.getElementById("nameInput"));
+    let soyisimInput = (<HTMLInputElement>document.getElementById("surnameInput"));
+    let telNoInput = (<HTMLInputElement>document.getElementById("numberInput"));
+    let mailInput = (<HTMLInputElement>document.getElementById("mailInput"));
 
+    if(
+        isimInput.value == '' || soyisimInput.value == '' || telNoInput.value == '' || mailInput.value == '' 
+    ){
+        alert("Lütfen Bilgileri Eksiksiz Giriniz!");
+    }else{
+        ekle();
+    }
+}
 
 
 function ekle(){
