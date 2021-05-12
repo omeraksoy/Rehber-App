@@ -38,12 +38,7 @@ function ekle() {
 }
 function kisiEkle(isimInput, soyisimInput, telNoInput, mailInput) {
     var insan = new kisi();
-    if (rehber.length > 0) {
-        insan.id = rehber[rehber.length - 1].id + 1;
-    }
-    else {
-        insan.id = 1;
-    }
+    insan.id = (new Date()).getTime();
     insan.isim = isimInput.value;
     insan.soyisim = soyisimInput.value;
     insan.mail = mailInput.value;
@@ -85,10 +80,8 @@ function kisileriEkranaYazdir() {
         guncelleIconKapsayici.setAttribute('href', '#');
         tekSilIconKapsayici.setAttribute('href', '#');
         mailKapsayici.setAttribute("href", "#");
-        guncelleIcon.setAttribute('onclick', 'guncelle(this)');
-        guncelleIcon.setAttribute('id', element.id.toString());
-        tekSilIcon.setAttribute('onclick', 'tekSil(this)');
-        tekSilIcon.setAttribute('id', element.id.toString());
+        guncelleIcon.setAttribute('onclick', 'guncelle(' + element.id + ')');
+        tekSilIcon.setAttribute('onclick', 'tekSil(' + element.id + ')');
         isimText.setAttribute('id', 'isim');
         soyisimText.setAttribute('id', 'soyisim');
         telNoText.setAttribute('id', 'tel');
@@ -131,11 +124,11 @@ function hepsiniSil() {
     }
 }
 //
-function tekSil(silinecekKisi) {
+function tekSil(silinecekId) {
     var confirmBox = confirm("Emin misiniz?");
     if (confirmBox == true) {
         var findIndex = rehber.findIndex(function (kisi) {
-            return kisi.id == silinecekKisi.id;
+            return kisi.id == silinecekId;
         });
         rehber.splice(findIndex, 1);
         kisileriEkranaYazdir();
@@ -143,9 +136,9 @@ function tekSil(silinecekKisi) {
     }
 }
 //
-function guncelle(guncellenecekKisi) {
+function guncelle(guncellenecekId) {
     var kisi = rehber.find(function (kisi) {
-        return kisi.id == guncellenecekKisi.id;
+        return kisi.id == guncellenecekId;
     });
     isimInput.value = kisi.isim;
     soyisimInput.value = kisi.soyisim;
@@ -153,7 +146,7 @@ function guncelle(guncellenecekKisi) {
     mailInput.value = kisi.mail;
     var guncelleButon = document.createElement('button');
     guncelleButon.classList.add('btn', 'btn-outline-primary', 'guncelle');
-    guncelleButon.setAttribute('onclick', "SatiriGuncelle(this)");
+    guncelleButon.setAttribute('onclick', 'SatiriGuncelle(' + kisi.id + ')');
     guncelleButon.setAttribute('type', 'button');
     guncelleButon.setAttribute('id', kisi.id.toString());
     guncelleButon.innerHTML = "Güncelle";
@@ -163,21 +156,16 @@ function guncelle(guncellenecekKisi) {
     ekleButonu.style.display = 'none';
 }
 //
-function SatiriGuncelle(guncelleButonu) {
-    var kisiIndex = rehber.findIndex(function (element) {
-        return element.id == guncelleButonu.id;
+function SatiriGuncelle(guncellenecekKisiId) {
+    var kisi = rehber.find(function (kisi) {
+        return kisi.id == guncellenecekKisiId;
     });
-    var insan = new kisi();
-    if (guncelleButonu) {
-        insan.id = parseInt(guncelleButonu.id);
-        insan.isim = isimInput.value;
-        insan.soyisim = soyisimInput.value;
-        insan.mail = mailInput.value;
-        insan.tel = telNoInput.value;
-        rehber.splice(kisiIndex, 1, insan);
-        kisileriEkranaYazdir();
-    }
-    var guncellebuton = document.getElementById("" + guncelleButonu.id.toString());
+    kisi.isim = isimInput.value;
+    kisi.soyisim = soyisimInput.value;
+    kisi.mail = mailInput.value;
+    kisi.tel = telNoInput.value;
+    kisileriEkranaYazdir();
+    var guncellebuton = document.getElementById("" + guncellenecekKisiId.toString());
     guncellebuton.remove();
     var ekleButonu = document.getElementById('ekle1');
     ekleButonu.style.display = 'inline-block';

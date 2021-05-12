@@ -53,20 +53,15 @@ function ekleKontrol(){
 
 
 function ekle(){
-    
+
     kisiEkle(isimInput,soyisimInput,telNoInput,mailInput);
 } 
 
 function kisiEkle(isimInput,soyisimInput,telNoInput,mailInput){
 
     let insan = new kisi();
-    if(rehber.length > 0){
-        insan.id = rehber[rehber.length-1].id+1;
-    }else{
-        insan.id = 1;
-    }
     
-
+    insan.id = (new Date()).getTime();
     insan.isim = isimInput.value
     insan.soyisim = soyisimInput.value
     insan.mail = mailInput.value
@@ -113,10 +108,8 @@ tekSilIcon.classList.add("fas", "fa-trash-alt", "fa-2x");
 guncelleIconKapsayici.setAttribute('href', '#');
 tekSilIconKapsayici.setAttribute('href', '#');
 mailKapsayici.setAttribute("href", "#");
-guncelleIcon.setAttribute('onclick','guncelle(this)');    
-guncelleIcon.setAttribute('id',element.id.toString());    
-tekSilIcon.setAttribute('onclick','tekSil(this)');
-tekSilIcon.setAttribute('id',element.id.toString());
+guncelleIcon.setAttribute('onclick','guncelle(' + element.id + ')');    
+tekSilIcon.setAttribute('onclick','tekSil(' + element.id + ')');
 isimText.setAttribute('id','isim');
 soyisimText.setAttribute('id','soyisim');
 telNoText.setAttribute('id', 'tel');
@@ -163,11 +156,11 @@ function hepsiniSil(){
     }
 }
 //
-function tekSil(silinecekKisi){
+function tekSil(silinecekId){
     let confirmBox = confirm("Emin misiniz?");
     if(confirmBox == true){
         let findIndex = rehber.findIndex(kisi => {
-            return kisi.id == silinecekKisi.id;
+            return kisi.id == silinecekId;
         });
         rehber.splice(findIndex,1);
         kisileriEkranaYazdir();
@@ -177,13 +170,12 @@ function tekSil(silinecekKisi){
 }
 
 //
-function guncelle(guncellenecekKisi){
+function guncelle(guncellenecekId){
     
-    
-    let kisi = rehber.find((kisi:kisi) =>{
-        return kisi.id == guncellenecekKisi.id;
-    })
 
+    let kisi = rehber.find((kisi:kisi) =>{
+        return kisi.id == guncellenecekId;
+    })
     
     isimInput.value = kisi.isim; 
     soyisimInput.value = kisi.soyisim;
@@ -192,7 +184,7 @@ function guncelle(guncellenecekKisi){
 
     let guncelleButon = document.createElement('button');
     guncelleButon.classList.add('btn','btn-outline-primary','guncelle');
-    guncelleButon.setAttribute('onclick',`SatiriGuncelle(this)`);
+    guncelleButon.setAttribute('onclick','SatiriGuncelle('+ kisi.id +')');
     guncelleButon.setAttribute('type','button');
     guncelleButon.setAttribute('id',kisi.id.toString());
     guncelleButon.innerHTML = "Güncelle";
@@ -204,28 +196,20 @@ function guncelle(guncellenecekKisi){
 
 }
 //
-function SatiriGuncelle(guncelleButonu){
+function SatiriGuncelle(guncellenecekKisiId){
 
-    
-
-    let kisiIndex = rehber.findIndex((element:kisi) =>{
-        return element.id == guncelleButonu.id;
+    let kisi = rehber.find((kisi:kisi) =>{
+        return kisi.id == guncellenecekKisiId;
     })
-    
-    let insan = new kisi();
-    if(guncelleButonu){
-        insan.id = parseInt(guncelleButonu.id);
-        insan.isim = isimInput.value;
-        insan.soyisim = soyisimInput.value;
-        insan.mail = mailInput.value;
-        insan.tel = telNoInput.value;
 
-        rehber.splice(kisiIndex,1,insan);
-
-        kisileriEkranaYazdir(); 
-    }
+    kisi.isim = isimInput.value;
+    kisi.soyisim = soyisimInput.value;
+    kisi.mail = mailInput.value;
+    kisi.tel = telNoInput.value;
+    kisileriEkranaYazdir(); 
     
-    let guncellebuton = document.getElementById(`${guncelleButonu.id.toString()}`);
+    
+    let guncellebuton = document.getElementById(`${guncellenecekKisiId.toString()}`);
     guncellebuton.remove();
     
     let ekleButonu = document.getElementById('ekle1');
