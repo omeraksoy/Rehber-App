@@ -58,8 +58,8 @@ function ekle(){
 } 
 
 function kisiEkle(isimInput,soyisimInput,telNoInput,mailInput){
+
     let insan = new kisi();
-    
     if(rehber.length > 0){
         insan.id = rehber[rehber.length-1].id+1;
     }else{
@@ -112,7 +112,7 @@ tekSilIcon.classList.add("fas", "fa-trash-alt", "fa-2x");
 // Attribute
 guncelleIconKapsayici.setAttribute('href', '#');
 tekSilIconKapsayici.setAttribute('href', '#');
-mailKapsayici.setAttribute("href", "#")
+mailKapsayici.setAttribute("href", "#");
 guncelleIcon.setAttribute('onclick','guncelle(this)');    
 guncelleIcon.setAttribute('id',element.id.toString());    
 tekSilIcon.setAttribute('onclick','tekSil(this)');
@@ -180,12 +180,11 @@ function tekSil(silinecekKisi){
 function guncelle(guncellenecekKisi){
     
     
-
     let kisi = rehber.find((kisi:kisi) =>{
         return kisi.id == guncellenecekKisi.id;
     })
 
-
+    
     isimInput.value = kisi.isim; 
     soyisimInput.value = kisi.soyisim;
     telNoInput.value = kisi.tel;
